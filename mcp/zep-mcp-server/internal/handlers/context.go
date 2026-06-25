@@ -11,7 +11,15 @@ import (
 	zepclient "github.com/getzep/zep/mcp/zep-mcp-server/pkg/zep"
 )
 
-// HandleGetUserContext handles the get_user_context tool
+// HandleGetUserContext registers an MCP tool handler for get_user_context.
+// It loads thread user context via client.Thread.GetUserContext (optional template_id)
+// and returns the context payload as MCP text JSON.
+//
+// Parameters:
+//   - client: authenticated Zep API client
+//
+// Returns:
+//   - an mcp.ToolHandlerFor that accepts GetUserContextInput and returns (*mcp.CallToolResult, any, error)
 func HandleGetUserContext(client *zepclient.Client) mcp.ToolHandlerFor[GetUserContextInput, any] {
 	return func(ctx context.Context, req *mcp.CallToolRequest, input GetUserContextInput) (*mcp.CallToolResult, any, error) {
 		// Build request

@@ -11,7 +11,15 @@ import (
 	zepclient "github.com/getzep/zep/mcp/zep-mcp-server/pkg/zep"
 )
 
-// HandleGetThreadMessages handles the get_thread_messages tool
+// HandleGetThreadMessages registers an MCP tool handler for get_thread_messages.
+// It retrieves thread messages via client.Thread.Get with optional lastn/limit filters
+// and returns the messages as MCP text JSON.
+//
+// Parameters:
+//   - client: authenticated Zep API client
+//
+// Returns:
+//   - an mcp.ToolHandlerFor that accepts GetThreadMessagesInput and returns (*mcp.CallToolResult, any, error)
 func HandleGetThreadMessages(client *zepclient.Client) mcp.ToolHandlerFor[GetThreadMessagesInput, any] {
 	return func(ctx context.Context, req *mcp.CallToolRequest, input GetThreadMessagesInput) (*mcp.CallToolResult, any, error) {
 		getReq := &zep.ThreadGetRequest{}

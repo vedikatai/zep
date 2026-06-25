@@ -5,6 +5,7 @@ import (
 	"testing"
 )
 
+// TODO: rename to TestFormatJSON_VariousInputs_SerializeOrError
 func TestFormatJSON(t *testing.T) {
 	tests := []struct {
 		name    string
@@ -51,6 +52,7 @@ func TestFormatJSON(t *testing.T) {
 	}
 }
 
+// TODO: rename to TestGetOptionalString_PresentAndMissing_ReturnsExpected
 func TestGetOptionalString(t *testing.T) {
 	tests := []struct {
 		name         string
@@ -99,6 +101,7 @@ func TestGetOptionalString(t *testing.T) {
 	}
 }
 
+// TODO: rename to TestGetOptionalInt_PresentAndMissing_ReturnsExpected
 func TestGetOptionalInt(t *testing.T) {
 	tests := []struct {
 		name         string
@@ -147,6 +150,7 @@ func TestGetOptionalInt(t *testing.T) {
 	}
 }
 
+// TODO: rename to TestGetOptionalFloat_PresentAndMissing_ReturnsExpected
 func TestGetOptionalFloat(t *testing.T) {
 	tests := []struct {
 		name         string
@@ -188,6 +192,7 @@ func TestGetOptionalFloat(t *testing.T) {
 	}
 }
 
+// TODO: rename to TestValidateRequired_EmptyAndPresent_ErrorsOrPasses
 func TestValidateRequired(t *testing.T) {
 	tests := []struct {
 		name    string
