@@ -19,8 +19,8 @@ Changelog = "https://github.com/getzep/zep/blob/main/integrations/pydantic-ai/py
 [project.optional-dependencies]
 dev = [
     "pytest>=7.0.0",
-    "pytest-cov",
-    "pytest-asyncio",
+    "pytest-cov>=4.0.0",
+    "pytest-asyncio>=0.21.0",
     "ruff>=0.1.0",
     "mypy>=1.0.0",
 ]
