@@ -10,7 +10,14 @@ import (
 	zepclient "github.com/getzep/zep/mcp/zep-mcp-server/pkg/zep"
 )
 
-// HandleListThreads handles the list_threads tool
+// HandleListThreads registers an MCP tool handler for list_threads.
+// It lists threads for a user via client.User.GetThreads and returns them as MCP text JSON.
+//
+// Parameters:
+//   - client: authenticated Zep API client
+//
+// Returns:
+//   - an mcp.ToolHandlerFor that accepts ListThreadsInput and returns (*mcp.CallToolResult, any, error)
 func HandleListThreads(client *zepclient.Client) mcp.ToolHandlerFor[ListThreadsInput, any] {
 	return func(ctx context.Context, req *mcp.CallToolRequest, input ListThreadsInput) (*mcp.CallToolResult, any, error) {
 		threads, err := client.User.GetThreads(ctx, input.UserID)

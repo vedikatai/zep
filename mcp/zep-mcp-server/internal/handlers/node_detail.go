@@ -10,7 +10,14 @@ import (
 	zepclient "github.com/getzep/zep/mcp/zep-mcp-server/pkg/zep"
 )
 
-// HandleGetNode handles the get_node tool
+// HandleGetNode registers an MCP tool handler for get_node.
+// It fetches a single graph node by UUID via client.Graph.Node.Get and returns it as MCP text JSON.
+//
+// Parameters:
+//   - client: authenticated Zep API client
+//
+// Returns:
+//   - an mcp.ToolHandlerFor that accepts GetNodeInput and returns (*mcp.CallToolResult, any, error)
 func HandleGetNode(client *zepclient.Client) mcp.ToolHandlerFor[GetNodeInput, any] {
 	return func(ctx context.Context, req *mcp.CallToolRequest, input GetNodeInput) (*mcp.CallToolResult, any, error) {
 		node, err := client.Graph.Node.Get(ctx, input.UUID)
