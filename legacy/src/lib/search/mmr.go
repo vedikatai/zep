@@ -5,8 +5,20 @@ import (
 	"fmt"
 	"math"
 
+	"github.com/getzep/zep/pkg/embeddings"
 	"github.com/viterin/vek/vek32"
 )
+
+// MaximalMarginalRelevanceF16 is MMR over float16-stored embeddings.
+// Delegates to pkg/embeddings (pure Go cosine; promotes f16→f32 per comparison).
+func MaximalMarginalRelevanceF16(
+	query embeddings.Vector,
+	embeddingList []embeddings.Vector,
+	lambdaMult float32,
+	k int,
+) ([]int, error) {
+	return embeddings.MaximalMarginalRelevance(query, embeddingList, lambdaMult, k)
+}
 
 // pairwiseCosineSimilarity takes two matrices of vectors and returns a matrix, where
 // the value at [i][j] is the cosine similarity between the ith vector in matrix1 and
