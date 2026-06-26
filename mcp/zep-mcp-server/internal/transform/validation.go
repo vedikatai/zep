@@ -59,6 +59,7 @@ func GetOptionalFloat(params map[string]interface{}, key string, defaultValue fl
 	return defaultValue
 }
 
+// TODO: verify if dead code, consider removing
 // GetOptionalStringSlice retrieves an optional string slice parameter
 func GetOptionalStringSlice(params map[string]interface{}, key string) []string {
 	if value, ok := params[key]; ok {
