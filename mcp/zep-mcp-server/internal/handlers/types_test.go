@@ -4,6 +4,7 @@ import (
 	"testing"
 )
 
+// TODO: rename to TestInputTypes_ZeroValues_AreNonNil
 // TestInputTypes verifies that input types have required fields
 func TestInputTypes(t *testing.T) {
 	tests := []struct {
@@ -28,6 +29,7 @@ func TestInputTypes(t *testing.T) {
 	}
 }
 
+// TODO: rename to TestSearchGraphInput_OptionalFields_ZeroByDefault
 // TestSearchGraphInputDefaults verifies default values
 func TestSearchGraphInputDefaults(t *testing.T) {
 	input := SearchGraphInput{
@@ -53,6 +55,7 @@ func TestSearchGraphInputDefaults(t *testing.T) {
 	}
 }
 
+// TODO: rename to TestGetUserInput_EmptyUserID_DetectedAsMissing
 // TestGetUserInputValidation verifies required fields
 func TestGetUserInputValidation(t *testing.T) {
 	tests := []struct {
@@ -82,6 +85,7 @@ func TestGetUserInputValidation(t *testing.T) {
 	}
 }
 
+// TODO: rename to TestListThreadsInput_UserID_RoundTrips
 // TestListThreadsInput verifies ListThreadsInput struct
 func TestListThreadsInput(t *testing.T) {
 	input := ListThreadsInput{

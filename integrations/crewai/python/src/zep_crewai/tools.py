@@ -46,7 +46,7 @@ class ZepSearchTool(BaseTool):
 
     def __init__(
         self, client: Zep, graph_id: str | None = None, user_id: str | None = None, **kwargs: Any
-    ):
+    ) -> None:
         """
         Initialize search tool bound to either a graph or user.
 
@@ -194,7 +194,7 @@ class ZepAddDataTool(BaseTool):
 
     def __init__(
         self, client: Zep, graph_id: str | None = None, user_id: str | None = None, **kwargs: Any
-    ):
+    ) -> None:
         """
         Initialize add data tool bound to either a graph or user.
 

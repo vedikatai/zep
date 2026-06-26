@@ -11,7 +11,15 @@ import (
 	zepclient "github.com/getzep/zep/mcp/zep-mcp-server/pkg/zep"
 )
 
-// HandleSearchGraph handles the search_graph tool using the new MCP SDK signature
+// HandleSearchGraph registers an MCP tool handler for graph search (search_graph).
+// It applies defaults (scope=edges, limit=10), builds a zep GraphSearchQuery from input,
+// calls client.Graph.Search, and returns the results as MCP text JSON plus the typed payload.
+//
+// Parameters:
+//   - client: authenticated Zep API client used to execute the search
+//
+// Returns:
+//   - an mcp.ToolHandlerFor that accepts SearchGraphInput and returns (*mcp.CallToolResult, any, error)
 func HandleSearchGraph(client *zepclient.Client) mcp.ToolHandlerFor[SearchGraphInput, any] {
 	return func(ctx context.Context, req *mcp.CallToolRequest, input SearchGraphInput) (*mcp.CallToolResult, any, error) {
 		// Apply defaults

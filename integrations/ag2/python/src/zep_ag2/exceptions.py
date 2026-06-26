@@ -24,7 +24,7 @@ class ZepAG2MemoryError(ZepAG2Error):
 class ZepDependencyError(ImportError):
     """Raised when required AG2 dependencies are not installed."""
 
-    def __init__(self, framework: str, install_command: str):
+    def __init__(self, framework: str, install_command: str) -> None:
         self.framework = framework
         self.install_command = install_command
         super().__init__(f"{framework} dependencies not found. Install with: {install_command}")

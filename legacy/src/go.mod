@@ -2,7 +2,12 @@ module github.com/getzep/zep
 
 go 1.24.0
 
+// Local float16 embedding storage codec (public monorepo path).
+replace github.com/getzep/zep/pkg/embeddings => ../../pkg/embeddings
+
 require (
+	github.com/getzep/zep/pkg/embeddings v0.0.0
+
 	dario.cat/mergo v1.0.1
 	github.com/ThreeDotsLabs/watermill v1.3.7
 	github.com/failsafe-go/failsafe-go v0.6.8

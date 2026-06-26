@@ -1,5 +1,7 @@
 package models
 
+import "github.com/getzep/zep/pkg/embeddings"
+
 type SessionSearchQueryCommon struct {
 	// The search text.
 	Text string `json:"text"`
@@ -10,9 +12,13 @@ type SessionSearchQueryCommon struct {
 	SessionIDs []string `json:"session_ids,omitempty"`
 }
 
+// SessionSearchResultCommon holds a search hit. Embedding is stored as float16
+// (pkg/embeddings.Vector) to halve durable memory vs legacy []float32; call
+// Embedding.Float32() before compute paths (MMR, cosine).
 type SessionSearchResultCommon struct {
-	Fact      *Fact     `json:"fact"`
-	Embedding []float32 `json:"-" swaggerignore:"true"`
+	Fact *Fact `json:"fact"`
+	// Embedding is the float16 storage form of the result vector (not serialized on the wire).
+	Embedding embeddings.Vector `json:"-" swaggerignore:"true"`
 }
 
 type SessionSearchRequest struct {

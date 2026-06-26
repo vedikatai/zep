@@ -11,7 +11,15 @@ import (
 	zepclient "github.com/getzep/zep/mcp/zep-mcp-server/pkg/zep"
 )
 
-// HandleGetUserEdges handles the get_user_edges tool
+// HandleGetUserEdges registers an MCP tool handler for get_user_edges.
+// It lists graph edges for a user via client.Graph.Edge.GetByUserID (default limit 20)
+// and returns the edges as MCP text JSON.
+//
+// Parameters:
+//   - client: authenticated Zep API client
+//
+// Returns:
+//   - an mcp.ToolHandlerFor that accepts GetUserEdgesInput and returns (*mcp.CallToolResult, any, error)
 func HandleGetUserEdges(client *zepclient.Client) mcp.ToolHandlerFor[GetUserEdgesInput, any] {
 	return func(ctx context.Context, req *mcp.CallToolRequest, input GetUserEdgesInput) (*mcp.CallToolResult, any, error) {
 		// Apply defaults

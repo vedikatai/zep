@@ -11,7 +11,15 @@ import (
 	zepclient "github.com/getzep/zep/mcp/zep-mcp-server/pkg/zep"
 )
 
-// HandleGetUserNodes handles the get_user_nodes tool
+// HandleGetUserNodes registers an MCP tool handler for get_user_nodes.
+// It lists graph nodes for a user via client.Graph.Node.GetByUserID (default limit 20)
+// and returns the nodes as MCP text JSON.
+//
+// Parameters:
+//   - client: authenticated Zep API client
+//
+// Returns:
+//   - an mcp.ToolHandlerFor that accepts GetUserNodesInput and returns (*mcp.CallToolResult, any, error)
 func HandleGetUserNodes(client *zepclient.Client) mcp.ToolHandlerFor[GetUserNodesInput, any] {
 	return func(ctx context.Context, req *mcp.CallToolRequest, input GetUserNodesInput) (*mcp.CallToolResult, any, error) {
 		// Apply defaults

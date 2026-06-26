@@ -11,7 +11,15 @@ import (
 	zepclient "github.com/getzep/zep/mcp/zep-mcp-server/pkg/zep"
 )
 
-// HandleGetEpisodes handles the get_episodes tool
+// HandleGetEpisodes registers an MCP tool handler for get_episodes.
+// It lists recent episodes for a user via client.Graph.Episode.GetByUserID (default lastn 10)
+// and returns the episodes as MCP text JSON.
+//
+// Parameters:
+//   - client: authenticated Zep API client
+//
+// Returns:
+//   - an mcp.ToolHandlerFor that accepts GetEpisodesInput and returns (*mcp.CallToolResult, any, error)
 func HandleGetEpisodes(client *zepclient.Client) mcp.ToolHandlerFor[GetEpisodesInput, any] {
 	return func(ctx context.Context, req *mcp.CallToolRequest, input GetEpisodesInput) (*mcp.CallToolResult, any, error) {
 		// Apply defaults
